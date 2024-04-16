@@ -10,7 +10,7 @@ class OrderMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final qtyController = TextEditingController(text: '1');
+    // final qtyController = TextEditingController(text: '1');
     return Column(
       children: [
         Row(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../components/components.dart';
 import '../../../../core/core.dart';
-import '../pages/navigator_page.dart';
+import '../pages/dashboard_page.dart';
 
 class SuccessPaymentDialog extends StatelessWidget {
   const SuccessPaymentDialog({super.key});
@@ -80,7 +80,7 @@ class SuccessPaymentDialog extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const MainNavPage()));
+                              builder: (context) => const DashboardPage()));
                     },
                     label: 'Selesai',
                   ),

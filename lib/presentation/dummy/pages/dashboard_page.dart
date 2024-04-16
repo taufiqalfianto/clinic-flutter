@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../../../core/core.dart';
+import '../../auth/bloc/logout/logout_bloc.dart';
+import '../../auth/pages/login_page.dart';
 import '../widgets/nav_item.dart';
 import 'data_master_page.dart';
 
-class MainNavPage extends StatefulWidget {
-  const MainNavPage({super.key});
+class DashboardPage extends StatefulWidget {
+  const DashboardPage({super.key});
 
   @override
-  State<MainNavPage> createState() => _MainNavPageState();
+  State<DashboardPage> createState() => _DashboardPagePageState();
 }
 
-class _MainNavPageState extends State<MainNavPage> {
+class _DashboardPagePageState extends State<DashboardPage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
@@ -63,10 +68,44 @@ class _MainNavPageState extends State<MainNavPage> {
                           isActive: _selectedIndex == 4,
                           onTap: () => _onItemTapped(4),
                         ),
-                        NavItem(
-                          iconPath: Assets.icons.logOut.path,
-                          isActive: false,
-                          onTap: () {},
+                        BlocListener<LogoutBloc, LogoutState>(
+                          listener: (context, state) {
+                            state.maybeWhen(
+                              orElse: () {},
+                              succes: () {
+                                showTopSnackBar(
+                                  Overlay.of(context),
+                                  CustomSnackBar.success(
+                                    message: "Logout Succes !!1",
+                                  ),
+                                );
+                                return Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginPage(),
+                                  ),
+                                );
+                              },
+                              error: (message) {
+                                return showTopSnackBar(
+                                  Overlay.of(context),
+                                  CustomSnackBar.error(
+                                    message:
+                                        "Something went wrong. Please check your credentials and try again",
+                                  ),
+                                );
+                              },
+                            );
+                          },
+                          child: NavItem(
+                            iconPath: Assets.icons.logOut.path,
+                            isActive: false,
+                            onTap: () {
+                              context.read<LogoutBloc>().add(
+                                    const LogoutEvent.logout(),
+                                  );
+                            },
+                          ),
                         ),
                       ],
                     ),

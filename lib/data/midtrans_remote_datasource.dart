@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../models/qris_response_model.dart';
-import '../models/qris_status_response_model.dart';
+import 'models/qris_response_model.dart';
+import 'models/qris_status_response_model.dart';
 
 class MidtransRemoteDatasource {
   String generateBasicAuthHeader(String serverKey) {

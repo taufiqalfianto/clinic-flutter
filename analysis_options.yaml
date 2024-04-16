@@ -9,7 +9,7 @@ analyzer:
 linter:
   rules:
     avoid_print: true
-    prefer_single_quotes: true
+    prefer_single_quotes: false
     prefer_relative_imports: true
     directives_ordering: true
     sort_child_properties_last: true

@@ -1,4 +1,4 @@
-import 'package:fic15/ui/home/pages/confirm_payment_page.dart';
+import 'package:fic15/presentation/dummy/pages/confirm_payment_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/button_menu.dart';

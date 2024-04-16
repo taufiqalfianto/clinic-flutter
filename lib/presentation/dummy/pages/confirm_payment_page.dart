@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../components/components.dart';
 import '../../../../core/core.dart';
-import '../../../data/datasources/midtrans_remote_datasource.dart';
+import '../../../data/midtrans_remote_datasource.dart';
 import '../bloc/qris/qris_bloc.dart';
 import '../dialogs/success_payment_dialog.dart';
 import '../models/product_model.dart';

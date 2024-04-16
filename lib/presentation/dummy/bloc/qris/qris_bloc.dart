@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:fic15/data/datasources/midtrans_remote_datasource.dart';
+import 'package:fic15/data/midtrans_remote_datasource.dart';
 import 'package:fic15/data/models/qris_response_model.dart';
 import 'package:fic15/data/models/qris_status_response_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
