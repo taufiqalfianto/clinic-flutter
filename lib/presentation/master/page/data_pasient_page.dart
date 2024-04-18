@@ -74,6 +74,7 @@ class _DataPasientPageState extends State<DataPasientPage> {
                       },
                       succes: (patients) {
                         return DataTable(
+                          columnSpacing: 200,
                           dataRowMinHeight: 30.0,
                           dataRowMaxHeight: 60.0,
                           columns: [
