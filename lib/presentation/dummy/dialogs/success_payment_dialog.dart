@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../components/components.dart';
 import '../../../../core/core.dart';
-import '../pages/dashboard_page.dart';
+import '../../dashboard/page/dashboard_page.dart';
 
 class SuccessPaymentDialog extends StatelessWidget {
   const SuccessPaymentDialog({super.key});

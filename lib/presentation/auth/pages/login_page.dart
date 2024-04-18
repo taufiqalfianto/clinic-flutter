@@ -5,7 +5,7 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../components/components.dart';
 import '../../../core/core.dart';
-import '../../dummy/pages/dashboard_page.dart';
+import '../../dashboard/page/dashboard_page.dart';
 import '../bloc/login/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                       CustomTextField(
                         controller: passwordController,
                         label: 'Kata Sandi',
-                        obscureText: true,
+                        // obscureText: true,
                       ),
                       const SpaceHeight(40.0),
                       BlocConsumer<LoginBloc, LoginState>(

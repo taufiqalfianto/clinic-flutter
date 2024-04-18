@@ -5,12 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'core/core.dart';
 import 'data/datasources/auth_local_datasource.dart';
 import 'data/datasources/auth_remote_datasource.dart';
+import 'data/datasources/master_remote_datasource.dart';
 import 'data/midtrans_remote_datasource.dart';
 import 'presentation/auth/bloc/login/login_bloc.dart';
 import 'presentation/auth/bloc/logout/logout_bloc.dart';
 import 'presentation/auth/pages/login_page.dart';
 import 'presentation/dummy/bloc/qris/qris_bloc.dart';
-import 'presentation/dummy/pages/dashboard_page.dart';
+import 'presentation/dashboard/page/dashboard_page.dart';
+import 'presentation/master/bloc/bloc/data_patients_bloc.dart';
+import 'presentation/master/bloc/doctors/data_doctor_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -31,6 +34,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => QrisBloc(MidtransRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => DataDoctorBloc(MasterRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => DataPatientsBloc(MasterRemoteDatasource()),
         ),
       ],
       child: MaterialApp(
