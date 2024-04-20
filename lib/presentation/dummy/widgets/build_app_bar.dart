@@ -10,6 +10,7 @@ class BuildAppBar extends StatelessWidget {
   final void Function(String)? searchChanged;
   final String searchHint;
   final Widget? trailing;
+  final Navigator? navigation;
 
   const BuildAppBar({
     super.key,
@@ -19,6 +20,7 @@ class BuildAppBar extends StatelessWidget {
     this.searchChanged,
     this.searchHint = 'Cari di sini',
     this.trailing,
+    this.navigation,
   });
 
   @override
@@ -31,6 +33,14 @@ class BuildAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Center(
+              child: Icon(Icons.arrow_back_ios),
+            ),
+          ),
           Flexible(
             flex: 3,
             child: Column(
