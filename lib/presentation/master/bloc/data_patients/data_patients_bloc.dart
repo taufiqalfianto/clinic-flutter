@@ -30,7 +30,8 @@ class DataPatientsBloc extends Bloc<DataPatientsEvent, DataPatientsState> {
     on<_GetPatientsByNik>(
       (event, emit) async {
         emit(_Loading());
-        final result = await _masterRemoteDatasource.getDoctorsbyNik(event.nik);
+        final result =
+            await _masterRemoteDatasource.getPatientsbyNik(event.nik);
         result.fold(
           (l) => emit(_Error()),
           (r) => emit(

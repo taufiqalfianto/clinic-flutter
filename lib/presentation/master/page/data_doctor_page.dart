@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../components/components.dart';
 import '../../../core/core.dart';
@@ -33,12 +35,17 @@ class _DataDoctorPageState extends State<DataDoctorPage> {
             withSearchInput: true,
             searchController: searchController,
             searchChanged: (value) {
-              if (searchController.text.length > 2 &&
+              if (searchController.text.length > 1 &&
                   searchController.text.isNotEmpty) {
                 context.read<DataDoctorBloc>().add(
                       DataDoctorEvent.getdoctorbyname(searchController.text),
                     );
-              } else {}
+              }
+              if (searchController.text.isEmpty) {
+                context
+                    .read<DataDoctorBloc>()
+                    .add(const DataDoctorEvent.getdoctor());
+              }
             },
             searchHint: 'Cari Dokter',
           ),

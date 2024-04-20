@@ -65,7 +65,7 @@ class MasterRemoteDatasource {
     }
   }
 
-  Future<Either<String, MasterPatientResponseModel>> getDoctorsbyNik(
+  Future<Either<String, MasterPatientResponseModel>> getPatientsbyNik(
       String nik) async {
     final authData = await AuthLocalDataSource().getAuthData();
     final url = Uri.parse('${Variable.baseurl}/api/get-patients?nik=$nik');

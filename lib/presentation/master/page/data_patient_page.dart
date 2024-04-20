@@ -34,12 +34,15 @@ class _DataPasientPageState extends State<DataPasientPage> {
             withSearchInput: true,
             searchController: searchController,
             searchChanged: (value) {
-            
-              if (searchController.text.length > 0 &&
-                  searchController.text.isNotEmpty) {
+              if (searchController.text.isNotEmpty) {
                 context.read<DataPatientsBloc>().add(
                       DataPatientsEvent.getpatientsbynik(searchController.text),
                     );
+              }
+              if (searchController.text.isEmpty) {
+                context
+                    .read<DataPatientsBloc>()
+                    .add(const DataPatientsEvent.getpatients());
               }
             },
             searchHint: 'Cari Pasien',
