@@ -1,12 +1,14 @@
 import 'package:fic15/presentation/dummy/pages/confirm_payment_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../components/button_menu.dart';
 import '../../../components/components.dart';
 import '../../../core/core.dart';
 import '../../dummy/widgets/build_app_bar.dart';
 import 'data_doctor_page.dart';
-import 'data_pasient_page.dart';
+import 'data_patient_page.dart';
 
 class DataMasterPage extends StatelessWidget {
   final void Function(int index) onTap;

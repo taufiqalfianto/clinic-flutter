@@ -1,3 +1,5 @@
+import 'package:fic15/presentation/master/bloc/data_patients/data_patients_bloc.dart';
+import 'package:fic15/presentation/master/bloc/data_doctors/data_doctor_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,8 +14,6 @@ import 'presentation/auth/bloc/logout/logout_bloc.dart';
 import 'presentation/auth/pages/login_page.dart';
 import 'presentation/dummy/bloc/qris/qris_bloc.dart';
 import 'presentation/dashboard/page/dashboard_page.dart';
-import 'presentation/master/bloc/bloc/data_patients_bloc.dart';
-import 'presentation/master/bloc/doctors/data_doctor_bloc.dart';
 
 void main() {
   runApp(const MyApp());

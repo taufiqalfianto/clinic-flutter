@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../../data/datasources/master_remote_datasource.dart';
-import '../../../../data/models/response/master_doctor_response_model.dart';
+import '../../../../../data/datasources/master_remote_datasource.dart';
+import '../../../../../data/models/response/master_doctor_response_model.dart';
 
 part 'data_doctor_event.dart';
 part 'data_doctor_state.dart';

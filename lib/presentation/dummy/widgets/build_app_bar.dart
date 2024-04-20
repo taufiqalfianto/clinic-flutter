@@ -44,8 +44,8 @@ class BuildAppBar extends StatelessWidget {
                     color: AppColors.primary,
                   ),
                 ),
-                const Text(
-                  'Senin, 12 Februari 2024',
+                Text(
+                  DateTime.now().toFormattedDate(),
                   style: TextStyle(
                     fontSize: 16.0,
                     color: AppColors.subtitle,

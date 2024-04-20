@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../components/components.dart';
 import '../../../core/core.dart';
 import '../../dummy/widgets/build_app_bar.dart';
-import '../bloc/doctors/data_doctor_bloc.dart';
+import '../bloc/data_doctors/data_doctor_bloc.dart';
 
 class DataDoctorPage extends StatefulWidget {
   const DataDoctorPage({super.key});

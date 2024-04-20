@@ -1,10 +1,11 @@
+// ignore: prefer_relative_imports
+import 'package:fic15/presentation/master/bloc/data_patients/data_patients_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../components/components.dart';
 import '../../../core/core.dart';
 import '../../dummy/widgets/build_app_bar.dart';
-import '../bloc/bloc/data_patients_bloc.dart';
 
 class DataPasientPage extends StatefulWidget {
   const DataPasientPage({super.key});
@@ -33,16 +34,12 @@ class _DataPasientPageState extends State<DataPasientPage> {
             withSearchInput: true,
             searchController: searchController,
             searchChanged: (value) {
-              if (searchController.text.length > 1 &&
+            
+              if (searchController.text.length > 0 &&
                   searchController.text.isNotEmpty) {
                 context.read<DataPatientsBloc>().add(
                       DataPatientsEvent.getpatientsbynik(searchController.text),
                     );
-              }
-              if (searchController.text.isEmpty) {
-                context
-                    .read<DataPatientsBloc>()
-                    .add(const DataPatientsEvent.getpatients());
               }
             },
             searchHint: 'Cari Pasien',

@@ -25,7 +25,9 @@ class MasterRemoteDatasource {
       return Left('Gagal mendapatkan data dokter');
     }
   }
-  Future<Either<String, MasterDoctorResponseModel>> getDoctorsbyName(String name) async {
+
+  Future<Either<String, MasterDoctorResponseModel>> getDoctorsbyName(
+      String name) async {
     final authData = await AuthLocalDataSource().getAuthData();
     final url = Uri.parse('${Variable.baseurl}/api/get-doctor?name=$name');
 
@@ -43,7 +45,8 @@ class MasterRemoteDatasource {
       return Left('Gagal mendapatkan data dokter');
     }
   }
-   Future<Either<String, MasterPatientResponseModel>> getPatients() async {
+
+  Future<Either<String, MasterPatientResponseModel>> getPatients() async {
     final authData = await AuthLocalDataSource().getAuthData();
     final url = Uri.parse('${Variable.baseurl}/api/get-patients');
 
@@ -61,9 +64,11 @@ class MasterRemoteDatasource {
       return Left('Gagal mendapatkan data pasien');
     }
   }
-  Future<Either<String, MasterPatientResponseModel>> getDoctorsbyNik(String nik) async {
+
+  Future<Either<String, MasterPatientResponseModel>> getDoctorsbyNik(
+      String nik) async {
     final authData = await AuthLocalDataSource().getAuthData();
-    final url = Uri.parse('${Variable.baseurl}/api/get-doctor?nik=$nik');
+    final url = Uri.parse('${Variable.baseurl}/api/get-patients?nik=$nik');
 
     final response = await http.get(
       url,
@@ -72,7 +77,6 @@ class MasterRemoteDatasource {
         'Authorization': 'Bearer ${authData?.token}',
       },
     );
-
     if (response.statusCode == 200) {
       return Right(MasterPatientResponseModel.fromJson(response.body));
     } else {
