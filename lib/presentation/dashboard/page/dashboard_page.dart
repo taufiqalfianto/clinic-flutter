@@ -6,8 +6,8 @@ import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../../../../../core/core.dart';
 import '../../auth/bloc/logout/logout_bloc.dart';
 import '../../auth/pages/login_page.dart';
-import '../widget/nav_item.dart';
 import '../../master/page/data_master_page.dart';
+import '../widget/nav_item.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});

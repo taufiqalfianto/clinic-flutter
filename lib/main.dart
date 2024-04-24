@@ -12,8 +12,10 @@ import 'presentation/auth/bloc/logout/logout_bloc.dart';
 import 'presentation/auth/pages/login_page.dart';
 import 'presentation/dashboard/page/dashboard_page.dart';
 import 'presentation/dummy/bloc/qris/qris_bloc.dart';
+import 'presentation/master/bloc/service_medicine/service_medicine_bloc.dart';
 import 'presentation/master/bloc/data_doctors/data_doctor_bloc.dart';
 import 'presentation/master/bloc/data_patients/data_patients_bloc.dart';
+import 'presentation/master/bloc/doctor_schedule/doctor_schedules_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,6 +42,12 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => DataPatientsBloc(MasterRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => DoctorSchedulesBloc(MasterRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => ServiceMedicineBloc(MasterRemoteDatasource()),
         ),
       ],
       child: MaterialApp(
