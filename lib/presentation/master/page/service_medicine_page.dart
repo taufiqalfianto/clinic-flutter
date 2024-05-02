@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../components/buttons.dart';
-import '../../../components/search_input.dart';
 import '../../../components/spaces.dart';
 import '../../../core/core.dart';
 import '../../dummy/widgets/build_app_bar.dart';
@@ -29,31 +28,32 @@ class _ServiceMedicinePageState extends State<ServiceMedicinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const PreferredSize(
+      appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0),
         child: BuildAppBar(
-          title: 'Data Master Layanan & Obat',
+          title: 'Data Master Dokter',
+          withSearchInput: true,
+          searchController: searchController,
+          searchChanged: (value) {
+            if (searchController.text.length > 1 &&
+                searchController.text.isNotEmpty) {
+              context.read<ServiceMedicineBloc>().add(
+                    ServiceMedicineEvent.getservicemedicinebyname(
+                        searchController.text),
+                  );
+            }
+            if (searchController.text.isEmpty) {
+              context.read<ServiceMedicineBloc>().add(
+                    ServiceMedicineEvent.getservicemedicine(),
+                  );
+            }
+          },
+          searchHint: 'Cari Dokter',
         ),
       ),
       body: ListView(
         padding: const EdgeInsets.all(24.0),
         children: [
-          Padding(
-            padding: EdgeInsets.only(right: context.deviceWidth / 2),
-            child: SearchInput(
-              controller: searchController,
-              // onChanged: (value) {
-              //   if (searchController.text.length > 1 &&
-              //       searchController.text.isNotEmpty) {
-              //     context.read<ServiceMedicineBloc>().add(
-              //         ServiceMedicineEvent.getservicemedicinebyname(
-              //             searchController.text));
-              //   } else {}
-              // },
-              hintText: 'Cari Data Item',
-            ),
-          ),
-          const SpaceHeight(40.0),
           Container(
             decoration: BoxDecoration(
               border: Border.all(color: AppColors.stroke),
@@ -72,116 +72,114 @@ class _ServiceMedicinePageState extends State<ServiceMedicinePage> {
                       return const Center(child: CircularProgressIndicator());
                     },
                     succes: (service) {
-                      return Center(
-                        child: DataTable(
-                          dataRowMinHeight: 30.0,
-                          columnSpacing: 200,
-                          dataRowMaxHeight: 60.0,
-                          columns: [
-                            DataColumn(
-                              label: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Button.filled(
-                                  onPressed: () {},
-                                  label: 'Nama Item',
-                                  width: null,
-                                  color: AppColors.title,
-                                  textColor: AppColors.black.withOpacity(0.5),
-                                  fontSize: 14.0,
-                                ),
+                      return DataTable(
+                        dataRowMinHeight: 30.0,
+                        columnSpacing: 200,
+                        dataRowMaxHeight: 60.0,
+                        columns: [
+                          DataColumn(
+                            label: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Button.filled(
+                                onPressed: () {},
+                                label: 'Nama Item',
+                                width: null,
+                                color: AppColors.title,
+                                textColor: AppColors.black.withOpacity(0.5),
+                                fontSize: 14.0,
                               ),
                             ),
-                            DataColumn(
-                              label: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Button.filled(
-                                  onPressed: () {},
-                                  label: 'Kategori',
-                                  width: null,
-                                  color: AppColors.title,
-                                  textColor: AppColors.black.withOpacity(0.5),
-                                  fontSize: 14.0,
-                                ),
+                          ),
+                          DataColumn(
+                            label: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Button.filled(
+                                onPressed: () {},
+                                label: 'Kategori',
+                                width: null,
+                                color: AppColors.title,
+                                textColor: AppColors.black.withOpacity(0.5),
+                                fontSize: 14.0,
                               ),
                             ),
-                            DataColumn(
-                              label: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Button.filled(
-                                  onPressed: () {},
-                                  label: 'Harga',
-                                  width: null,
-                                  color: AppColors.title,
-                                  textColor: AppColors.black.withOpacity(0.5),
-                                  fontSize: 14.0,
-                                ),
+                          ),
+                          DataColumn(
+                            label: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Button.filled(
+                                onPressed: () {},
+                                label: 'Harga',
+                                width: null,
+                                color: AppColors.title,
+                                textColor: AppColors.black.withOpacity(0.5),
+                                fontSize: 14.0,
                               ),
                             ),
-                            DataColumn(
-                              label: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Button.filled(
-                                  onPressed: () {},
-                                  label: 'Qty',
-                                  width: null,
-                                  color: AppColors.title,
-                                  textColor: AppColors.black.withOpacity(0.5),
-                                  fontSize: 14.0,
-                                ),
+                          ),
+                          DataColumn(
+                            label: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Button.filled(
+                                onPressed: () {},
+                                label: 'Qty',
+                                width: null,
+                                color: AppColors.title,
+                                textColor: AppColors.black.withOpacity(0.5),
+                                fontSize: 14.0,
                               ),
                             ),
-                          ],
-                          rows: service.isEmpty
-                              ? [
-                                  const DataRow(
+                          ),
+                        ],
+                        rows: service.isEmpty
+                            ? [
+                                const DataRow(
+                                  cells: [
+                                    DataCell(Row(
+                                      children: [
+                                        Icon(Icons.highlight_off),
+                                        SpaceWidth(4.0),
+                                        Text('Data tidak ditemukan..'),
+                                      ],
+                                    )),
+                                    DataCell.empty,
+                                    DataCell.empty,
+                                    DataCell.empty,
+                                  ],
+                                ),
+                              ]
+                            : service
+                                .map(
+                                  (product) => DataRow(
                                     cells: [
-                                      DataCell(Row(
-                                        children: [
-                                          Icon(Icons.highlight_off),
-                                          SpaceWidth(4.0),
-                                          Text('Data tidak ditemukan..'),
-                                        ],
-                                      )),
-                                      DataCell.empty,
-                                      DataCell.empty,
-                                      DataCell.empty,
+                                      DataCell(
+                                        Text(
+                                          product.name ?? '',
+                                          style: const TextStyle(
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                      DataCell(
+                                        Center(
+                                          child: Text(product.category ?? ''),
+                                        ),
+                                      ),
+                                      DataCell(
+                                        Center(
+                                          child: Text(
+                                              double.parse(product.price!)
+                                                  .toInt()
+                                                  .currencyFormatRp),
+                                        ),
+                                      ),
+                                      DataCell(
+                                        Center(
+                                          child: Text(product.category ?? ''),
+                                        ),
+                                      ),
                                     ],
                                   ),
-                                ]
-                              : service
-                                  .map(
-                                    (product) => DataRow(
-                                      cells: [
-                                        DataCell(
-                                          Text(
-                                            product.name ?? '',
-                                            style: const TextStyle(
-                                                fontWeight: FontWeight.bold),
-                                          ),
-                                        ),
-                                        DataCell(
-                                          Center(
-                                            child: Text(product.category ?? ''),
-                                          ),
-                                        ),
-                                        DataCell(
-                                          Center(
-                                            child: Text(
-                                                double.parse(product.price!)
-                                                    .toInt()
-                                                    .currencyFormatRp),
-                                          ),
-                                        ),
-                                        DataCell(
-                                          Center(
-                                            child: Text(product.category ?? ''),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  )
-                                  .toList(),
-                        ),
+                                )
+                                .toList(),
                       );
                     },
                   );
