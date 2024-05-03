@@ -130,7 +130,7 @@ class _DoctorSchedulePageState extends State<DoctorSchedulePage> {
                                               element.doctor!.doctorName ==
                                               entry.key)
                                           .doctor!
-                                          .doctorSpecialis ??
+                                          .doctorSpecialist ??
                                       ''),
                                 ],
                               ),

@@ -3,7 +3,7 @@ import 'dart:convert';
 class MasterPatientResponseModel {
     final List<PatientsMaster>? data;
     final String? message;
-    final bool? status;
+    final String? status;
 
     MasterPatientResponseModel({
         this.data,
@@ -38,14 +38,14 @@ class PatientsMaster {
     final String? gender;
     final String? birthPlace;
     final DateTime? birthDate;
-    final int? deceased;
+    final int? isDeceased;
     final String? addressLine;
     final String? city;
     final String? cityCode;
     final String? province;
     final String? provinceCode;
-    final String? dictrict;
-    final String? dictrictCode;
+    final String? district;
+    final String? districtCode;
     final String? village;
     final String? villageCode;
     final String? rt;
@@ -67,14 +67,14 @@ class PatientsMaster {
         this.gender,
         this.birthPlace,
         this.birthDate,
-        this.deceased,
+        this.isDeceased,
         this.addressLine,
         this.city,
         this.cityCode,
         this.province,
         this.provinceCode,
-        this.dictrict,
-        this.dictrictCode,
+        this.district,
+        this.districtCode,
         this.village,
         this.villageCode,
         this.rt,
@@ -101,14 +101,14 @@ class PatientsMaster {
         gender: json["gender"],
         birthPlace: json["birth_place"],
         birthDate: json["birth_date"] == null ? null : DateTime.parse(json["birth_date"]),
-        deceased: json["deceased"],
+        isDeceased: json["is_deceased"],
         addressLine: json["address_line"],
         city: json["city"],
         cityCode: json["city_code"],
         province: json["province"],
         provinceCode: json["province_code"],
-        dictrict: json["dictrict"],
-        dictrictCode: json["dictrict_code"],
+        district: json["district"],
+        districtCode: json["district_code"],
         village: json["village"],
         villageCode: json["village_code"],
         rt: json["rt"],
@@ -131,14 +131,14 @@ class PatientsMaster {
         "gender": gender,
         "birth_place": birthPlace,
         "birth_date": "${birthDate!.year.toString().padLeft(4, '0')}-${birthDate!.month.toString().padLeft(2, '0')}-${birthDate!.day.toString().padLeft(2, '0')}",
-        "deceased": deceased,
+        "is_deceased": isDeceased,
         "address_line": addressLine,
         "city": city,
         "city_code": cityCode,
         "province": province,
         "province_code": provinceCode,
-        "dictrict": dictrict,
-        "dictrict_code": dictrictCode,
+        "district": district,
+        "district_code": districtCode,
         "village": village,
         "village_code": villageCode,
         "rt": rt,

@@ -83,12 +83,12 @@ class DoctorSchedules {
 class Doctor {
     final int? id;
     final String? doctorName;
-    final String? doctorSpecialis;
+    final String? doctorSpecialist;
     final String? doctorPhone;
     final String? doctorEmail;
-    final String? doctorPhoto;
-    final String? doctorAddress;
-    final String? doctorSip;
+    final String? photo;
+    final String? address;
+    final String? sip;
     final dynamic idIhs;
     final dynamic nik;
     final DateTime? createdAt;
@@ -97,12 +97,12 @@ class Doctor {
     Doctor({
         this.id,
         this.doctorName,
-        this.doctorSpecialis,
+        this.doctorSpecialist,
         this.doctorPhone,
         this.doctorEmail,
-        this.doctorPhoto,
-        this.doctorAddress,
-        this.doctorSip,
+        this.photo,
+        this.address,
+        this.sip,
         this.idIhs,
         this.nik,
         this.createdAt,
@@ -116,12 +116,12 @@ class Doctor {
     factory Doctor.fromMap(Map<String, dynamic> json) => Doctor(
         id: json["id"],
         doctorName: json["doctor_name"],
-        doctorSpecialis: json["doctor_specialis"],
+        doctorSpecialist: json["doctor_specialist"],
         doctorPhone: json["doctor_phone"],
         doctorEmail: json["doctor_email"],
-        doctorPhoto: json["doctor_photo"],
-        doctorAddress: json["doctor_address"],
-        doctorSip: json["doctor_sip"],
+        photo: json["photo"],
+        address: json["address"],
+        sip: json["sip"],
         idIhs: json["id_ihs"],
         nik: json["nik"],
         createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
@@ -131,12 +131,12 @@ class Doctor {
     Map<String, dynamic> toMap() => {
         "id": id,
         "doctor_name": doctorName,
-        "doctor_specialis": doctorSpecialis,
+        "doctor_specialist": doctorSpecialist,
         "doctor_phone": doctorPhone,
         "doctor_email": doctorEmail,
-        "doctor_photo": doctorPhoto,
-        "doctor_address": doctorAddress,
-        "doctor_sip": doctorSip,
+        "photo": photo,
+        "address": address,
+        "sip": sip,
         "id_ihs": idIhs,
         "nik": nik,
         "created_at": createdAt?.toIso8601String(),

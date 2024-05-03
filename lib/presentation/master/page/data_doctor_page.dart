@@ -156,8 +156,8 @@ class _DataDoctorPageState extends State<DataDoctorPage> {
                                         ),
                                       ),
                                       DataCell(
-                                          Text(doctor.doctorSpecialis ?? '')),
-                                      DataCell(Text(doctor.doctorSip ?? '')),
+                                          Text(doctor.doctorSpecialist ?? '')),
+                                      DataCell(Text(doctor.sip ?? '')),
                                       DataCell(Text(doctor.doctorPhone ?? '')),
                                     ]),
                                   )
