@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../components/components.dart';
 import '../../../../core/core.dart';
-import '../models/product_model.dart';
+import '../../dummy/models/product_model.dart';
 
 class OrderMenu extends StatelessWidget {
   final ProductModel data;

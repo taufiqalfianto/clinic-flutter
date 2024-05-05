@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../components/buttons.dart';
 import '../../../components/spaces.dart';
 import '../../../core/constants/colors.dart';
-import '../../dummy/widgets/build_app_bar.dart';
+import '../../dashboard/widget/build_app_bar.dart';
 import '../bloc/doctor_schedule/doctor_schedules_bloc.dart';
 
 class DoctorSchedulePage extends StatefulWidget {

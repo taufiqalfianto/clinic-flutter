@@ -5,7 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../components/components.dart';
 import '../../../core/core.dart';
-import '../../dummy/widgets/build_app_bar.dart';
+import '../../dashboard/widget/build_app_bar.dart';
+import '../dialog/create_patient_dialog.dart';
 
 class DataPasientPage extends StatefulWidget {
   const DataPasientPage({super.key});
@@ -46,6 +47,16 @@ class _DataPasientPageState extends State<DataPasientPage> {
               }
             },
             searchHint: 'Cari Pasien',
+            trailing: Button.filled(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  barrierDismissible: false,
+                  builder: (context) => CreatePatientDialog(),
+                );
+              },
+              label: 'Pasien Baru',
+            ),
           ),
         ),
         body: ListView(

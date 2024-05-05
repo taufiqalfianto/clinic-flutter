@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import '../../../components/components.dart';
 import '../../../core/core.dart';
@@ -42,7 +44,7 @@ class BuildAppBar extends StatelessWidget {
             ),
           ),
           Flexible(
-            flex: 3,
+            flex: 2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -66,7 +68,7 @@ class BuildAppBar extends StatelessWidget {
           ),
           if (withSearchInput)
             Flexible(
-              flex: 4,
+              flex: 2,
               child: SearchInput(
                 controller: searchController!,
                 onChanged: searchChanged,
@@ -74,8 +76,14 @@ class BuildAppBar extends StatelessWidget {
               ),
             ),
           if (withSearchInput)
-            const Flexible(flex: 1, child: SizedBox.shrink()),
-          trailing ?? const SizedBox.shrink(),
+            const Flexible(
+              flex: 1,
+              child: SizedBox.shrink(),
+            ),
+          Flexible(
+            flex: 1,
+            child: trailing ?? const SizedBox.shrink(),
+          ),
         ],
       ),
     );

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 import '../../core/constants/variable.dart';
@@ -46,6 +48,25 @@ class AuthRemoteDatasourse {
       return left(
         response.body,
       );
+    }
+  }
+
+  Future<Either<String, String>> satusehattoken() async {
+    final authData = await AuthLocalDataSource().getAuthData();
+    final url = Uri.parse('${Variable.baseurl}/api/satusehattoken');
+
+    final response = await http.get(
+      url,
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${authData?.token}'
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return right(jsonDecode(response.body)['token']);
+    } else {
+      return left('Gagal Mendapatkan Token Satu Sehat');
     }
   }
 }

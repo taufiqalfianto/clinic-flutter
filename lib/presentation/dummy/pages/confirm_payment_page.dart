@@ -9,7 +9,7 @@ import '../../../data/midtrans_remote_datasource.dart';
 import '../bloc/qris/qris_bloc.dart';
 import '../dialogs/success_payment_dialog.dart';
 import '../models/product_model.dart';
-import '../widgets/order_menu.dart';
+import '../../dashboard/widget/order_menu.dart';
 
 enum PaymentType { qris, cash }
 

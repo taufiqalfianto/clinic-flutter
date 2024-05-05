@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../components/buttons.dart';
 import '../../../components/spaces.dart';
 import '../../../core/core.dart';
-import '../../dummy/widgets/build_app_bar.dart';
+import '../../dashboard/widget/build_app_bar.dart';
 import '../bloc/service_medicine/service_medicine_bloc.dart';
 
 class ServiceMedicinePage extends StatefulWidget {
