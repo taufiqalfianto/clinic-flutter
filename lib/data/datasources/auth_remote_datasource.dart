@@ -59,7 +59,8 @@ class AuthRemoteDatasourse {
       url,
       headers: {
         'Accept': 'application/json',
-        'Authorization': 'Bearer ${authData?.token}'
+        'Authorization': 'Bearer ${authData?.token}',
+        'Content-Type': 'application/json',
       },
     );
 

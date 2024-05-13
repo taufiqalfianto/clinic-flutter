@@ -12,7 +12,7 @@ class CustomDatePicker extends StatefulWidget {
   final bool showLabel;
   bool? isDisabled = false;
 
-   CustomDatePicker({
+  CustomDatePicker({
     super.key,
     required this.label,
     this.showLabel = true,

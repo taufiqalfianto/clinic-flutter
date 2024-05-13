@@ -9,7 +9,7 @@ import '../models/response/satu sehat/wilayah_response_model.dart';
 class SatuSehatMasterWilayahRemoteDatasource {
   Future<Either<String, ProvinceResponseModel>> getProvince() async {
     // final tokenresult = await AuthRemoteDatasourse().satusehattoken();
-    final tokenresult = 'RBseBpGKjZ3kcS0RObPAC7gZCrQk';
+    final tokenresult = '${Variable.token}';
     print(tokenresult);
     final token = tokenresult;
     final url =
@@ -29,7 +29,7 @@ class SatuSehatMasterWilayahRemoteDatasource {
   Future<Either<String, CityResponseModel>> getCities(int provinceCode) async {
     // final tokenResult = await AuthRemoteDatasourse().satusehattoken();
     // final token = tokenResult.fold((l) => '-', (r) => r);
-     final tokenresult = 'RBseBpGKjZ3kcS0RObPAC7gZCrQk';
+    final tokenresult = '${Variable.token}';
     print(tokenresult);
     final token = tokenresult;
     final url = Uri.parse(
@@ -50,7 +50,7 @@ class SatuSehatMasterWilayahRemoteDatasource {
       int cityCode) async {
     // final tokenResult = await AuthRemoteDatasourse().satusehattoken();
     // final token = tokenResult.fold((l) => '-', (r) => r);
-     final tokenresult = 'RBseBpGKjZ3kcS0RObPAC7gZCrQk';
+    final tokenresult = '${Variable.token}';
     print(tokenresult);
     final token = tokenresult;
     final url = Uri.parse(
@@ -71,7 +71,7 @@ class SatuSehatMasterWilayahRemoteDatasource {
       int districtCode) async {
     // final tokenResult = await AuthRemoteDatasourse().satusehattoken();
     // final token = tokenResult.fold((l) => '-', (r) => r);
-     final tokenresult = 'RBseBpGKjZ3kcS0RObPAC7gZCrQk';
+    final tokenresult = '${Variable.token}';
     print(tokenresult);
     final token = tokenresult;
     final url = Uri.parse(
