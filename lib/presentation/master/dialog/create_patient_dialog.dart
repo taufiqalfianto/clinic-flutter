@@ -406,10 +406,9 @@ class _CreatePatientDialogState extends State<CreatePatientDialog> {
                                   message: "Data Pasien Berhasil Ditambahkan",
                                 ),
                               );
-                              context.pop();
-                              // context.pushReplacement(
-                              //   const DashboardPage(),
-                              // );
+                              context.pushReplacement(
+                                const DashboardPage(),
+                              );
                             },
                           );
                         },
