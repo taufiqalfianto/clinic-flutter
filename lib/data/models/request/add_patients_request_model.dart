@@ -1,34 +1,6 @@
 import 'dart:convert';
 
-class AddPatientsResponseModel {
-    final Data? data;
-    final String? message;
-    final String? status;
-
-    AddPatientsResponseModel({
-        this.data,
-        this.message,
-        this.status,
-    });
-
-    factory AddPatientsResponseModel.fromJson(String str) => AddPatientsResponseModel.fromMap(json.decode(str));
-
-    String toJson() => json.encode(toMap());
-
-    factory AddPatientsResponseModel.fromMap(Map<String, dynamic> json) => AddPatientsResponseModel(
-        data: json["data"] == null ? null : Data.fromMap(json["data"]),
-        message: json["message"],
-        status: json["status"],
-    );
-
-    Map<String, dynamic> toMap() => {
-        "data": data?.toMap(),
-        "message": message,
-        "status": status,
-    };
-}
-
-class Data {
+class AddPatientRequestModel {
     final String? nik;
     final String? kk;
     final String? name;
@@ -36,9 +8,9 @@ class Data {
     final String? email;
     final String? gender;
     final String? birthPlace;
-    final DateTime? birthDate;
+    final String? birthDate;
     final String? addressLine;
-    final String? isDeceased;
+    final int? isDeceased;
     final String? city;
     final String? cityCode;
     final String? province;
@@ -51,11 +23,10 @@ class Data {
     final String? rw;
     final String? postalCode;
     final String? maritalStatus;
-    final DateTime? updatedAt;
-    final DateTime? createdAt;
-    final int? id;
+    final String? relationshipName;
+    final String? relationshipPhone;
 
-    Data({
+    AddPatientRequestModel({
         this.nik,
         this.kk,
         this.name,
@@ -78,16 +49,15 @@ class Data {
         this.rw,
         this.postalCode,
         this.maritalStatus,
-        this.updatedAt,
-        this.createdAt,
-        this.id,
+        this.relationshipName,
+        this.relationshipPhone,
     });
 
-    factory Data.fromJson(String str) => Data.fromMap(json.decode(str));
+    factory AddPatientRequestModel.fromJson(String str) => AddPatientRequestModel.fromMap(json.decode(str));
 
     String toJson() => json.encode(toMap());
 
-    factory Data.fromMap(Map<String, dynamic> json) => Data(
+    factory AddPatientRequestModel.fromMap(Map<String, dynamic> json) => AddPatientRequestModel(
         nik: json["nik"],
         kk: json["kk"],
         name: json["name"],
@@ -95,7 +65,7 @@ class Data {
         email: json["email"],
         gender: json["gender"],
         birthPlace: json["birth_place"],
-        birthDate: json["birth_date"] == null ? null : DateTime.parse(json["birth_date"]),
+        birthDate: json["birth_date"],
         addressLine: json["address_line"],
         isDeceased: json["is_deceased"],
         city: json["city"],
@@ -110,9 +80,8 @@ class Data {
         rw: json["rw"],
         postalCode: json["postal_code"],
         maritalStatus: json["marital_status"],
-        updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
-        createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-        id: json["id"],
+        relationshipName: json["relationship_name"],
+        relationshipPhone: json["relationship_phone"],
     );
 
     Map<String, dynamic> toMap() => {
@@ -123,7 +92,7 @@ class Data {
         "email": email,
         "gender": gender,
         "birth_place": birthPlace,
-        "birth_date": "${birthDate!.year.toString().padLeft(4, '0')}-${birthDate!.month.toString().padLeft(2, '0')}-${birthDate!.day.toString().padLeft(2, '0')}",
+        "birth_date": birthDate,
         "address_line": addressLine,
         "is_deceased": isDeceased,
         "city": city,
@@ -138,8 +107,7 @@ class Data {
         "rw": rw,
         "postal_code": postalCode,
         "marital_status": maritalStatus,
-        "updated_at": updatedAt?.toIso8601String(),
-        "created_at": createdAt?.toIso8601String(),
-        "id": id,
+        "relationship_name": relationshipName,
+        "relationship_phone": relationshipPhone,
     };
 }

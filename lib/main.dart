@@ -13,11 +13,15 @@ import 'presentation/auth/bloc/logout/logout_bloc.dart';
 import 'presentation/auth/pages/login_page.dart';
 import 'presentation/dashboard/page/dashboard_page.dart';
 import 'presentation/dummy/bloc/qris/qris_bloc.dart';
-import 'presentation/master/bloc/province/province_bloc.dart';
-import 'presentation/master/bloc/service_medicine/service_medicine_bloc.dart';
+import 'presentation/master/bloc/add_patients/add_patients_bloc.dart';
+import 'presentation/master/bloc/subdistricts/subdistricts_bloc.dart';
+import 'presentation/master/bloc/cities/cities_bloc.dart';
 import 'presentation/master/bloc/data_doctors/data_doctor_bloc.dart';
 import 'presentation/master/bloc/data_patients/data_patients_bloc.dart';
+import 'presentation/master/bloc/districts/districts_bloc.dart';
 import 'presentation/master/bloc/doctor_schedule/doctor_schedules_bloc.dart';
+import 'presentation/master/bloc/province/province_bloc.dart';
+import 'presentation/master/bloc/service_medicine/service_medicine_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -52,7 +56,23 @@ class MyApp extends StatelessWidget {
           create: (context) => ServiceMedicineBloc(MasterRemoteDatasource()),
         ),
         BlocProvider(
-          create: (context) => ProvinceBloc(SatuSehatMasterWilayahRemoteDatasource()),
+          create: (context) =>
+              ProvinceBloc(SatuSehatMasterWilayahRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              CitiesBloc(SatuSehatMasterWilayahRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              DistrictsBloc(SatuSehatMasterWilayahRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              SubdistrictsBloc(SatuSehatMasterWilayahRemoteDatasource()),
+        ),
+        BlocProvider(
+          create: (context) => AddPatientsBloc(MasterRemoteDatasource()),
         ),
       ],
       child: MaterialApp(

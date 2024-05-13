@@ -186,7 +186,7 @@ class _DataPasientPageState extends State<DataPasientPage> {
                                           Center(
                                             child: Text(
                                               patient.birthDate!
-                                                  .toFormattedDate(),
+                                                  .toFormattedDate() ?? '',
                                             ),
                                           ),
                                         ),

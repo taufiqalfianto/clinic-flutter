@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:http/http.dart' as http;
 
 import '../../core/constants/variable.dart';
+import '../models/request/add_patients_request_model.dart';
 import '../models/response/doctor_schedule_response_model.dart';
 import '../models/response/master_doctor_response_model.dart';
 import '../models/response/master_patients_response_model.dart';
@@ -161,6 +162,28 @@ class MasterRemoteDatasource {
     );
     if (response.statusCode == 200) {
       return Right(ServiceMedicineResponseModel.fromJson(response.body));
+    } else {
+      return Left('Gagal mendapatkan perawatan medis');
+    }
+  }
+
+  Future<Either<String, String>> addPatients(
+      AddPatientRequestModel data) async {
+    final authData = await AuthLocalDataSource().getAuthData();
+    final url = Uri.parse('${Variable.baseurl}/api/get-patients');
+
+    final response = await http.post(
+      url,
+      headers: {
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ${authData?.token}',
+        'Content-Type': 'application/json',
+      },
+      body: data.toJson(),
+    );
+    print(response.body);
+    if (response.statusCode == 201) {
+      return Right('Pasien Berhasil Ditambahkan');
     } else {
       return Left('Gagal mendapatkan perawatan medis');
     }
