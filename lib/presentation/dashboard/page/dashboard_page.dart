@@ -7,6 +7,7 @@ import '../../../../../core/core.dart';
 import '../../auth/bloc/logout/logout_bloc.dart';
 import '../../auth/pages/login_page.dart';
 import '../../master/page/data_master_page.dart';
+import '../../patient_schedule/pages/patient_schedule_page.dart';
 import '../widget/nav_item.dart';
 
 class DashboardPage extends StatefulWidget {
@@ -23,7 +24,7 @@ class _DashboardPagePageState extends State<DashboardPage> {
     const Center(child: Text('This is page 1')),
     DataMasterPage(onTap: (_) {}),
     const Center(child: Text('This is page 3')),
-    const Center(child: Text('This is page 4')),
+    // PatientSchedulePage(onTap: (_) {}),
     const Center(child: Text('This is page 5')),
   ];
 
@@ -61,7 +62,14 @@ class _DashboardPagePageState extends State<DashboardPage> {
                         NavItem(
                           iconPath: Assets.icons.shoppingBagProduct.path,
                           isActive: _selectedIndex == 3,
-                          onTap: () => _onItemTapped(3),
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      PatientSchedulePage(),
+                                ),);
+                          },
                         ),
                         NavItem(
                           iconPath: Assets.icons.setting.path,

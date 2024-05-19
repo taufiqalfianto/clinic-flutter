@@ -1,5 +1,3 @@
-import 'package:fic15/presentation/master/page/doctor_schedule_page.dart';
-import 'package:fic15/presentation/master/page/service_medicine_page.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/button_menu.dart';
@@ -7,6 +5,8 @@ import '../../../components/components.dart';
 import '../../../core/core.dart';
 import 'data_doctor_page.dart';
 import 'data_patient_page.dart';
+import 'doctor_schedule_page.dart';
+import 'service_medicine_page.dart';
 
 class DataMasterPage extends StatelessWidget {
   final void Function(int index) onTap;

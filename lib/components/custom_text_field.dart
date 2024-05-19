@@ -12,6 +12,8 @@ class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool readOnly;
+  final String? labeltext;
+  final bool? isDescription;
 
   const CustomTextField({
     super.key,
@@ -24,6 +26,8 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.readOnly = false,
+    required this.labeltext,
+    this.isDescription = false,
   });
 
   @override
@@ -41,25 +45,34 @@ class CustomTextField extends StatelessWidget {
           ),
           const SpaceHeight(12.0),
         ],
-        TextFormField(
-          controller: controller,
-          onChanged: onChanged,
-          obscureText: obscureText,
-          keyboardType: keyboardType,
-          readOnly: readOnly,
-          decoration: InputDecoration(
-            prefixIcon: prefixIcon,
-            suffixIcon: suffixIcon,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.0),
-              borderSide: const BorderSide(color: Colors.grey),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('$labeltext'),
+            SizedBox(
+              height: 16, 
             ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(16.0),
-              borderSide: const BorderSide(color: Colors.grey),
+            TextFormField(
+              controller: controller,
+              onChanged: onChanged,
+              obscureText: obscureText,
+              keyboardType: keyboardType,
+              readOnly: readOnly,
+              decoration: InputDecoration(
+                prefixIcon: prefixIcon,
+                suffixIcon: suffixIcon,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16.0),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16.0),
+                  borderSide: const BorderSide(color: Colors.grey),
+                ),
+                hintText: label,
+              ),
             ),
-            hintText: label,
-          ),
+          ],
         ),
       ],
     );

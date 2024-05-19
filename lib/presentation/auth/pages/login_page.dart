@@ -54,11 +54,13 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SpaceHeight(30.0),
                       CustomTextField(
+                        labeltext: 'Nomor Ponsel atau Email',
                         controller: emailController,
                         label: 'Nomor Ponsel atau Email',
                       ),
                       const SpaceHeight(20.0),
                       CustomTextField(
+                        labeltext: 'Kata Sandi',
                         controller: passwordController,
                         label: 'Kata Sandi',
                         // obscureText: true,

@@ -134,30 +134,35 @@ class _CreatePatientDialogState extends State<CreatePatientDialog> {
                 CustomTextField(
                   controller: nikController,
                   label: 'NIK',
+                  labeltext: 'NIK',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
                 CustomTextField(
                   controller: kkController,
                   label: 'KK',
+                  labeltext: 'KK',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
                 CustomTextField(
                   controller: patientNameController,
                   label: 'Nama Pasien',
+                  labeltext: 'Nama Pasien',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
                 CustomTextField(
                   controller: phoneController,
                   label: 'Nomor Handphone',
+                  labeltext: 'Nomor Handphone',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
                 CustomTextField(
                   controller: emailController,
                   label: 'Email',
+                  labeltext: 'Email',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
@@ -176,6 +181,7 @@ class _CreatePatientDialogState extends State<CreatePatientDialog> {
                 CustomTextField(
                   controller: birthPlaceController,
                   label: 'Tempat Lahir',
+                  labeltext: 'Tempat Lahir',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
@@ -208,6 +214,7 @@ class _CreatePatientDialogState extends State<CreatePatientDialog> {
                 CustomTextField(
                   controller: addressController,
                   label: 'Alamat Lengkap',
+                  labeltext: 'Alamat Lengkap',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
@@ -347,18 +354,21 @@ class _CreatePatientDialogState extends State<CreatePatientDialog> {
                 CustomTextField(
                   controller: rtController,
                   label: 'RT',
+                  labeltext: 'RT',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
                 CustomTextField(
                   controller: rwController,
                   label: 'RW',
+                  labeltext: 'RW',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
                 CustomTextField(
                   controller: postalCodeController,
                   label: 'Kode Pos',
+                  labeltext: 'Kode Pos',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
@@ -375,12 +385,14 @@ class _CreatePatientDialogState extends State<CreatePatientDialog> {
                 CustomTextField(
                   controller: relationshipNameController,
                   label: 'Nama Pasangan',
+                  labeltext: 'Nama Pasangan',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),
                 CustomTextField(
                   controller: relationshipPhoneController,
                   label: 'Nomor Handphone Pasangan',
+                  labeltext: 'Nomor Handphone Pasangan',
                   showLabel: false,
                 ),
                 const SpaceHeight(24.0),

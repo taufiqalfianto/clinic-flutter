@@ -5,8 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../components/components.dart';
 import '../../../core/core.dart';
+import '../../../data/models/response/master_patients_response_model.dart';
 import '../../dashboard/widget/build_app_bar.dart';
 import '../dialog/create_patient_dialog.dart';
+import '../dialog/create_reserve_patient_dialog.dart';
 
 class DataPasientPage extends StatefulWidget {
   const DataPasientPage({super.key});
@@ -22,6 +24,14 @@ class _DataPasientPageState extends State<DataPasientPage> {
   void initState() {
     context.read<DataPatientsBloc>().add(const DataPatientsEvent.getpatients());
     super.initState();
+  }
+
+  void createReservePatient([PatientsMaster? patient]) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => CreateReservePatientDialog(patient: patient),
+    );
   }
 
   @override
@@ -68,141 +78,204 @@ class _DataPasientPageState extends State<DataPasientPage> {
                 borderRadius: BorderRadius.circular(20.0),
               ),
               child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(vertical: 20.0),
                 scrollDirection: Axis.horizontal,
-                child: BlocBuilder<DataPatientsBloc, DataPatientsState>(
-                  builder: (context, state) {
-                    return state.maybeWhen(
-                      orElse: () {
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      },
-                      loading: () {
-                        return Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      },
-                      succes: (patients) {
-                        return DataTable(
-                          columnSpacing: 200,
-                          dataRowMinHeight: 30.0,
-                          dataRowMaxHeight: 60.0,
-                          columns: [
-                            DataColumn(
-                              label: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Button.filled(
-                                  onPressed: () {},
-                                  label: 'Nama Pasien',
-                                  width: null,
-                                  color: AppColors.title,
-                                  textColor: AppColors.black.withOpacity(0.5),
-                                  fontSize: 14.0,
-                                ),
-                              ),
-                            ),
-                            DataColumn(
-                              label: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Button.filled(
-                                  onPressed: () {},
-                                  label: 'Jenis Kelamnin',
-                                  width: null,
-                                  color: AppColors.title,
-                                  textColor: AppColors.black.withOpacity(0.5),
-                                  fontSize: 14.0,
-                                ),
-                              ),
-                            ),
-                            DataColumn(
-                              label: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Button.filled(
-                                  onPressed: () {},
-                                  label: 'Tanggal Lahir',
-                                  width: null,
-                                  color: AppColors.title,
-                                  textColor: AppColors.black.withOpacity(0.5),
-                                  fontSize: 14.0,
-                                ),
-                              ),
-                            ),
-                            DataColumn(
-                              label: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Button.filled(
-                                  onPressed: () {},
-                                  label: 'NIK',
-                                  width: null,
-                                  color: AppColors.title,
-                                  textColor: AppColors.black.withOpacity(0.5),
-                                  fontSize: 14.0,
-                                ),
-                              ),
-                            ),
-                          ],
-                          rows: patients.isEmpty
-                              ? [
-                                  const DataRow(
-                                    cells: [
-                                      DataCell(Row(
-                                        children: [
-                                          Icon(Icons.highlight_off),
-                                          SpaceWidth(4.0),
-                                          Text('Data tidak ditemukan..'),
-                                        ],
-                                      )),
-                                      DataCell.empty,
-                                      DataCell.empty,
-                                      DataCell.empty,
-                                    ],
+                child: Center(
+                  child: BlocBuilder<DataPatientsBloc, DataPatientsState>(
+                    builder: (context, state) {
+                      return state.maybeWhen(
+                        orElse: () {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                        succes: (patients) {
+                          return DataTable(
+                            columnSpacing: 100,
+                            dataRowMinHeight: 30.0,
+                            dataRowMaxHeight: 50.0,
+                            columns: [
+                              DataColumn(
+                                label: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Button.filled(
+                                    onPressed: () {},
+                                    label: 'Nama Pasien',
+                                    width: null,
+                                    color: AppColors.title,
+                                    textColor: AppColors.black.withOpacity(0.5),
+                                    fontSize: 14.0,
                                   ),
-                                ]
-                              : patients
-                                  .map(
-                                    (patient) => DataRow(
+                                ),
+                              ),
+                              DataColumn(
+                                label: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Button.filled(
+                                    onPressed: () {},
+                                    label: 'Phone',
+                                    width: null,
+                                    color: AppColors.title,
+                                    textColor: AppColors.black.withOpacity(0.5),
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                              DataColumn(
+                                label: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Button.filled(
+                                    onPressed: () {},
+                                    label: 'Email',
+                                    width: null,
+                                    color: AppColors.title,
+                                    textColor: AppColors.black.withOpacity(0.5),
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                              DataColumn(
+                                label: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Button.filled(
+                                    onPressed: () {},
+                                    label: 'Jenis Kelamnin',
+                                    width: null,
+                                    color: AppColors.title,
+                                    textColor: AppColors.black.withOpacity(0.5),
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                              DataColumn(
+                                label: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Button.filled(
+                                    onPressed: () {},
+                                    label: 'Tanggal Lahir',
+                                    width: null,
+                                    color: AppColors.title,
+                                    textColor: AppColors.black.withOpacity(0.5),
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                              DataColumn(
+                                label: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Button.filled(
+                                    onPressed: () {},
+                                    label: 'NIK',
+                                    width: null,
+                                    color: AppColors.title,
+                                    textColor: AppColors.black.withOpacity(0.5),
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                              DataColumn(
+                                label: Padding(
+                                  padding: const EdgeInsets.only(
+                                    bottom: 8,
+                                  ),
+                                  child: Button.filled(
+                                    onPressed: () {},
+                                    label: 'Reservation',
+                                    width: null,
+                                    color: AppColors.title,
+                                    textColor: AppColors.black.withOpacity(0.5),
+                                    fontSize: 14.0,
+                                  ),
+                                ),
+                              ),
+                            ],
+                            rows: patients.isEmpty
+                                ? [
+                                    const DataRow(
                                       cells: [
-                                        DataCell(Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Text(
-                                              patient.name ?? '',
-                                              style: const TextStyle(
-                                                  fontWeight: FontWeight.bold),
-                                            ),
-                                            Text(patient.phone ?? ''),
-                                          ],
-                                        )),
                                         DataCell(
-                                          Center(
-                                            child: Text(patient.gender ?? ''),
+                                          Row(
+                                            children: [
+                                              Icon(Icons.highlight_off),
+                                              SpaceWidth(4.0),
+                                              Text('Data tidak ditemukan.'),
+                                            ],
                                           ),
                                         ),
-                                        DataCell(
-                                          Center(
-                                            child: Text(
-                                              patient.birthDate!
-                                                  .toFormattedDate(),
-                                            ),
-                                          ),
-                                        ),
-                                        DataCell(
-                                          Center(
-                                            child: Text(patient.nik ?? ''),
-                                          ),
-                                        ),
+                                        DataCell.empty,
+                                        DataCell.empty,
+                                        DataCell.empty,
+                                        DataCell.empty,
                                       ],
                                     ),
-                                  )
-                                  .toList(),
-                        );
-                      },
-                    );
-                  },
+                                  ]
+                                : patients
+                                    .map(
+                                      (patient) => DataRow(
+                                        cells: [
+                                          DataCell(
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  patient.name ?? '',
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          DataCell(
+                                            Center(
+                                              child: Text(patient.phone ?? ''),
+                                            ),
+                                          ),
+                                          DataCell(
+                                            Text(
+                                              patient.email ?? '',
+                                              softWrap: true,
+                                              overflow: TextOverflow.fade,
+                                            ),
+                                          ),
+                                          DataCell(
+                                            Center(
+                                              child: Text(patient.gender ?? ''),
+                                            ),
+                                          ),
+                                          DataCell(
+                                            Center(
+                                              child: Text(
+                                                patient.birthDate!
+                                                    .toFormattedDate(),
+                                              ),
+                                            ),
+                                          ),
+                                          DataCell(
+                                            Center(
+                                              child: Text(patient.nik ?? ''),
+                                            ),
+                                          ),
+                                          DataCell(
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.all(8.0),
+                                              child: Button.filled(
+                                                onPressed: () {
+                                                  createReservePatient(patient);
+                                                },
+                                                label: 'Reservasi',
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                    .toList(),
+                          );
+                        },
+                      );
+                    },
+                  ),
                 ),
               ),
             ),
