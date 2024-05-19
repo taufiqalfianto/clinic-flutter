@@ -24,7 +24,7 @@ import 'presentation/master/bloc/doctor_schedule/doctor_schedules_bloc.dart';
 import 'presentation/master/bloc/province/province_bloc.dart';
 import 'presentation/master/bloc/service_medicine/service_medicine_bloc.dart';
 import 'presentation/master/bloc/subdistricts/subdistricts_bloc.dart';
-import 'presentation/patient_schedule/bloc/bloc/patient_schedule_bloc.dart';
+import 'presentation/patient_schedule/bloc/patient_schedule/patient_schedule_bloc.dart';
 
 void main() {
   runApp(const MyApp());

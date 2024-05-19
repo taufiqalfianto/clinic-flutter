@@ -13,11 +13,27 @@ class PatientScheduleBloc
   final SchedulePatientRemoteDatasource _schedulePatientRemoteDatasource;
   PatientScheduleBloc(this._schedulePatientRemoteDatasource)
       : super(_Initial()) {
-    on<PatientScheduleEvent>(
+    on<_getPatientSchedule>(
       (event, emit) async {
         emit(_Loading());
         final result =
             await _schedulePatientRemoteDatasource.getPatientSchedules();
+
+        result.fold(
+          (l) => emit(_Error()),
+          (r) => emit(
+            _Succes(
+              r.data ?? [],
+            ),
+          ),
+        );
+      },
+    );
+    on<_getPatientSchedulebyNik>(
+      (event, emit) async {
+        emit(_Loading());
+        final result =
+            await _schedulePatientRemoteDatasource.getPatientSchedulesbyNik(event.nik);
 
         result.fold(
           (l) => emit(_Error()),

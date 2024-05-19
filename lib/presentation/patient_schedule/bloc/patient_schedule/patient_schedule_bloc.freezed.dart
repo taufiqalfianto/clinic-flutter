@@ -20,18 +20,21 @@ mixin _$PatientScheduleEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getPatientSchedule,
+    required TResult Function(String nik) getPatientSchedulebyNik,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getPatientSchedule,
+    TResult? Function(String nik)? getPatientSchedulebyNik,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getPatientSchedule,
+    TResult Function(String nik)? getPatientSchedulebyNik,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,22 @@ mixin _$PatientScheduleEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_getPatientSchedule value) getPatientSchedule,
+    required TResult Function(_getPatientSchedulebyNik value)
+        getPatientSchedulebyNik,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_getPatientSchedule value)? getPatientSchedule,
+    TResult? Function(_getPatientSchedulebyNik value)? getPatientSchedulebyNik,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_getPatientSchedule value)? getPatientSchedule,
+    TResult Function(_getPatientSchedulebyNik value)? getPatientSchedulebyNik,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,6 +122,7 @@ class _$StartedImpl implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getPatientSchedule,
+    required TResult Function(String nik) getPatientSchedulebyNik,
   }) {
     return started();
   }
@@ -124,6 +132,7 @@ class _$StartedImpl implements _Started {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getPatientSchedule,
+    TResult? Function(String nik)? getPatientSchedulebyNik,
   }) {
     return started?.call();
   }
@@ -133,6 +142,7 @@ class _$StartedImpl implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getPatientSchedule,
+    TResult Function(String nik)? getPatientSchedulebyNik,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -146,6 +156,8 @@ class _$StartedImpl implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_getPatientSchedule value) getPatientSchedule,
+    required TResult Function(_getPatientSchedulebyNik value)
+        getPatientSchedulebyNik,
   }) {
     return started(this);
   }
@@ -155,6 +167,7 @@ class _$StartedImpl implements _Started {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_getPatientSchedule value)? getPatientSchedule,
+    TResult? Function(_getPatientSchedulebyNik value)? getPatientSchedulebyNik,
   }) {
     return started?.call(this);
   }
@@ -164,6 +177,7 @@ class _$StartedImpl implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_getPatientSchedule value)? getPatientSchedule,
+    TResult Function(_getPatientSchedulebyNik value)? getPatientSchedulebyNik,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -217,6 +231,7 @@ class _$getPatientScheduleImpl implements _getPatientSchedule {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function() getPatientSchedule,
+    required TResult Function(String nik) getPatientSchedulebyNik,
   }) {
     return getPatientSchedule();
   }
@@ -226,6 +241,7 @@ class _$getPatientScheduleImpl implements _getPatientSchedule {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
     TResult? Function()? getPatientSchedule,
+    TResult? Function(String nik)? getPatientSchedulebyNik,
   }) {
     return getPatientSchedule?.call();
   }
@@ -235,6 +251,7 @@ class _$getPatientScheduleImpl implements _getPatientSchedule {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function()? getPatientSchedule,
+    TResult Function(String nik)? getPatientSchedulebyNik,
     required TResult orElse(),
   }) {
     if (getPatientSchedule != null) {
@@ -248,6 +265,8 @@ class _$getPatientScheduleImpl implements _getPatientSchedule {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_getPatientSchedule value) getPatientSchedule,
+    required TResult Function(_getPatientSchedulebyNik value)
+        getPatientSchedulebyNik,
   }) {
     return getPatientSchedule(this);
   }
@@ -257,6 +276,7 @@ class _$getPatientScheduleImpl implements _getPatientSchedule {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
     TResult? Function(_getPatientSchedule value)? getPatientSchedule,
+    TResult? Function(_getPatientSchedulebyNik value)? getPatientSchedulebyNik,
   }) {
     return getPatientSchedule?.call(this);
   }
@@ -266,6 +286,7 @@ class _$getPatientScheduleImpl implements _getPatientSchedule {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_getPatientSchedule value)? getPatientSchedule,
+    TResult Function(_getPatientSchedulebyNik value)? getPatientSchedulebyNik,
     required TResult orElse(),
   }) {
     if (getPatientSchedule != null) {
@@ -277,6 +298,151 @@ class _$getPatientScheduleImpl implements _getPatientSchedule {
 
 abstract class _getPatientSchedule implements PatientScheduleEvent {
   const factory _getPatientSchedule() = _$getPatientScheduleImpl;
+}
+
+/// @nodoc
+abstract class _$$getPatientSchedulebyNikImplCopyWith<$Res> {
+  factory _$$getPatientSchedulebyNikImplCopyWith(
+          _$getPatientSchedulebyNikImpl value,
+          $Res Function(_$getPatientSchedulebyNikImpl) then) =
+      __$$getPatientSchedulebyNikImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String nik});
+}
+
+/// @nodoc
+class __$$getPatientSchedulebyNikImplCopyWithImpl<$Res>
+    extends _$PatientScheduleEventCopyWithImpl<$Res,
+        _$getPatientSchedulebyNikImpl>
+    implements _$$getPatientSchedulebyNikImplCopyWith<$Res> {
+  __$$getPatientSchedulebyNikImplCopyWithImpl(
+      _$getPatientSchedulebyNikImpl _value,
+      $Res Function(_$getPatientSchedulebyNikImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? nik = null,
+  }) {
+    return _then(_$getPatientSchedulebyNikImpl(
+      null == nik
+          ? _value.nik
+          : nik // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$getPatientSchedulebyNikImpl implements _getPatientSchedulebyNik {
+  const _$getPatientSchedulebyNikImpl(this.nik);
+
+  @override
+  final String nik;
+
+  @override
+  String toString() {
+    return 'PatientScheduleEvent.getPatientSchedulebyNik(nik: $nik)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$getPatientSchedulebyNikImpl &&
+            (identical(other.nik, nik) || other.nik == nik));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, nik);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$getPatientSchedulebyNikImplCopyWith<_$getPatientSchedulebyNikImpl>
+      get copyWith => __$$getPatientSchedulebyNikImplCopyWithImpl<
+          _$getPatientSchedulebyNikImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() getPatientSchedule,
+    required TResult Function(String nik) getPatientSchedulebyNik,
+  }) {
+    return getPatientSchedulebyNik(nik);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? getPatientSchedule,
+    TResult? Function(String nik)? getPatientSchedulebyNik,
+  }) {
+    return getPatientSchedulebyNik?.call(nik);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? getPatientSchedule,
+    TResult Function(String nik)? getPatientSchedulebyNik,
+    required TResult orElse(),
+  }) {
+    if (getPatientSchedulebyNik != null) {
+      return getPatientSchedulebyNik(nik);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_getPatientSchedule value) getPatientSchedule,
+    required TResult Function(_getPatientSchedulebyNik value)
+        getPatientSchedulebyNik,
+  }) {
+    return getPatientSchedulebyNik(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_getPatientSchedule value)? getPatientSchedule,
+    TResult? Function(_getPatientSchedulebyNik value)? getPatientSchedulebyNik,
+  }) {
+    return getPatientSchedulebyNik?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_getPatientSchedule value)? getPatientSchedule,
+    TResult Function(_getPatientSchedulebyNik value)? getPatientSchedulebyNik,
+    required TResult orElse(),
+  }) {
+    if (getPatientSchedulebyNik != null) {
+      return getPatientSchedulebyNik(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _getPatientSchedulebyNik implements PatientScheduleEvent {
+  const factory _getPatientSchedulebyNik(final String nik) =
+      _$getPatientSchedulebyNikImpl;
+
+  String get nik;
+  @JsonKey(ignore: true)
+  _$$getPatientSchedulebyNikImplCopyWith<_$getPatientSchedulebyNikImpl>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

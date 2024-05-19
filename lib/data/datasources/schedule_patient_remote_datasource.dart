@@ -48,4 +48,24 @@ Future<Either<String, PatientScheduleResponseModel>>
       return const Left('Gagal menambahkan reservasi');
     }
   }
+
+Future<Either<String, PatientScheduleResponseModel>>
+      getPatientSchedulesbyNik(String nik) async {
+    final authData = await AuthLocalDataSource().getAuthData();
+    final url = Uri.parse('${Variable.baseurl}/api/api-patient-schedules?nik=$nik');
+    final response = await http.get(
+      url,
+      headers: {
+        'Authorization': 'Bearer ${authData?.token}',
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+    );
+
+    if (response.statusCode == 200) {
+      return Right(PatientScheduleResponseModel.fromJson(response.body));
+    } else {
+      return const Left('Gagal menambahkan reservasi');
+    }
+  }
 }

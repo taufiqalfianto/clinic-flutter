@@ -6,7 +6,8 @@ import '../../../components/spaces.dart';
 import '../../../core/core.dart';
 import '../../dashboard/widget/build_app_bar.dart';
 import '../../dummy/enums/pasient_status.dart';
-import '../bloc/bloc/patient_schedule_bloc.dart';
+import '../../master/bloc/data_patients/data_patients_bloc.dart';
+import '../bloc/patient_schedule/patient_schedule_bloc.dart';
 
 class PatientSchedulePage extends StatefulWidget {
   // final void Function(int index) onTap;
@@ -76,14 +77,20 @@ class _PatientSchedulePageState extends State<PatientSchedulePage> {
             title: 'Jadwal Pasien',
             withSearchInput: true,
             searchController: searchController,
-            // searchChanged: (value) {
-            //   searchResult = patients
-            //       .where((element) => element.nama
-            //           .toLowerCase()
-            //           .contains(searchController.text.toLowerCase()))
-            //       .toList();
-            //   setState(() {});
-            // },
+            searchChanged: (value) {
+              if (searchController.text.isNotEmpty) {
+                context.read<PatientScheduleBloc>().add(
+                      PatientScheduleEvent.getPatientSchedulebyNik(
+                        searchController.text,
+                      ),
+                    );
+              }
+              if (searchController.text.isEmpty) {
+                context.read<PatientScheduleBloc>().add(
+                      PatientScheduleEvent.getPatientSchedule(),
+                    );
+              }
+            },
             searchHint: 'Cari Pasien',
           ),
         ),
@@ -240,7 +247,7 @@ class _PatientSchedulePageState extends State<PatientSchedulePage> {
                                 (patient) => DataRow(cells: [
                                   DataCell(Text(patient.patient!.name ?? '')),
                                   DataCell(Text(
-                                      '${patient.complaint!.length > 10 ? patient.complaint!.substring(0, 10) : patient.complaint}')),
+                                      '${patient.complaint!.length > 10 ? patient.complaint!.substring(0, 50) : patient.complaint}')),
                                   DataCell(Text(patient.patient!.gender ?? '')),
                                   DataCell(Text(patient.patient!.birthDate!
                                       .toFormattedDate())),
