@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../../../components/buttons.dart';
 import '../../../components/spaces.dart';
 import '../../../core/core.dart';
 import '../../dashboard/widget/build_app_bar.dart';
 import '../../dummy/enums/pasient_status.dart';
-import '../../master/bloc/data_patients/data_patients_bloc.dart';
 import '../bloc/patient_schedule/patient_schedule_bloc.dart';
 
 class PatientSchedulePage extends StatefulWidget {
-  // final void Function(int index) onTap;
+  final void Function(int index) onTap;
 
   PatientSchedulePage({
     super.key,
-    // required this.onTap,
+    required this.onTap,
   });
 
   @override
@@ -136,6 +137,7 @@ class _PatientSchedulePageState extends State<PatientSchedulePage> {
             BlocBuilder<PatientScheduleBloc, PatientScheduleState>(
               builder: (context, state) {
                 return state.maybeWhen(
+                  orElse: () => Container(),
                   loading: () => const Center(
                     child: CircularProgressIndicator(),
                   ),
@@ -246,29 +248,49 @@ class _PatientSchedulePageState extends State<PatientSchedulePage> {
                               .map(
                                 (patient) => DataRow(cells: [
                                   DataCell(Text(patient.patient!.name ?? '')),
-                                  DataCell(Text(
-                                      '${patient.complaint!.length > 10 ? patient.complaint!.substring(0, 50) : patient.complaint}')),
-                                  DataCell(Text(patient.patient!.gender ?? '')),
-                                  DataCell(Text(patient.patient!.birthDate!
-                                      .toFormattedDate())),
-                                  DataCell(Text(patient.patient!.nik ?? '')),
-                                  DataCell(ClipRRect(
-                                    borderRadius: BorderRadius.circular(12.0),
-                                    child: ColoredBox(
-                                      color: Colors.grey.withOpacity(0.2),
-                                      child: Padding(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 12.0, vertical: 8.0),
-                                        child: Text(
-                                          patient.status ?? '',
-                                          style: TextStyle(
-                                            color:
-                                                Colors.black.withOpacity(0.5),
+                                  DataCell(
+                                    Container(
+                                      width: 200,
+                                      child: Text(
+                                        '${patient.complaint!.length > 15 ? patient.complaint!.substring(0, 25) : patient.complaint}',
+                                      ),
+                                    ),
+                                  ),
+                                  DataCell(
+                                    Text(patient.patient!.gender ?? ''),
+                                  ),
+                                  DataCell(
+                                    Text(
+                                      patient.patient!.birthDate!
+                                          .toFormattedDate(),
+                                    ),
+                                  ),
+                                  DataCell(
+                                    Text(patient.patient!.nik ?? ''),
+                                  ),
+                                  DataCell(
+                                    Center(
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(12.0),
+                                        child: ColoredBox(
+                                          color: Colors.grey.withOpacity(0.2),
+                                          child: Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 12.0,
+                                                vertical: 8.0),
+                                            child: Text(
+                                              patient.status ?? '',
+                                              style: TextStyle(
+                                                color: Colors.black
+                                                    .withOpacity(0.5),
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),
                                     ),
-                                  )),
+                                  ),
                                   DataCell(
                                     PopupMenuButton<PasientStatus>(
                                       offset: const Offset(0, 50),
@@ -331,7 +353,6 @@ class _PatientSchedulePageState extends State<PatientSchedulePage> {
                       ),
                     );
                   },
-                  orElse: () => const SizedBox(),
                 );
               },
             ),

@@ -35,7 +35,9 @@ class DataMasterPage extends StatelessWidget {
         child: Padding(
           padding:
               const EdgeInsets.symmetric(horizontal: 80.0, vertical: 110.0),
-          child: Wrap(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ButtonMenu(
                 label: 'Data Dokter',

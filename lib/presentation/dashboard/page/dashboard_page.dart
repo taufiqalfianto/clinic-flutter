@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
@@ -24,7 +25,7 @@ class _DashboardPagePageState extends State<DashboardPage> {
     const Center(child: Text('This is page 1')),
     DataMasterPage(onTap: (_) {}),
     const Center(child: Text('This is page 3')),
-    // PatientSchedulePage(onTap: (_) {}),
+    PatientSchedulePage(onTap: (_) {}),
     const Center(child: Text('This is page 5')),
   ];
 
@@ -43,6 +44,7 @@ class _DashboardPagePageState extends State<DashboardPage> {
                   child: ColoredBox(
                     color: AppColors.primary,
                     child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         NavItem(
                           iconPath: Assets.icons.logo.path,
@@ -62,14 +64,7 @@ class _DashboardPagePageState extends State<DashboardPage> {
                         NavItem(
                           iconPath: Assets.icons.shoppingBagProduct.path,
                           isActive: _selectedIndex == 3,
-                          onTap: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      PatientSchedulePage(),
-                                ),);
-                          },
+                          onTap: () => _onItemTapped(3),
                         ),
                         NavItem(
                           iconPath: Assets.icons.setting.path,

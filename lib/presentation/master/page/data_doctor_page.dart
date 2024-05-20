@@ -29,6 +29,7 @@ class _DataDoctorPageState extends State<DataDoctorPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100.0),
           child: BuildAppBar(
+            withnavigation: true,
             title: 'Data Master Dokter',
             withSearchInput: true,
             searchController: searchController,

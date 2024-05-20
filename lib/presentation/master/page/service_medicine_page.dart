@@ -31,6 +31,7 @@ class _ServiceMedicinePageState extends State<ServiceMedicinePage> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(100.0),
         child: BuildAppBar(
+          withnavigation: true,
           title: 'Data Master Dokter',
           withSearchInput: true,
           searchController: searchController,

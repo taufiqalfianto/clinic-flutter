@@ -41,6 +41,7 @@ class _DataPasientPageState extends State<DataPasientPage> {
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100.0),
           child: BuildAppBar(
+            withnavigation: true,
             title: 'Data Master Pasien',
             withSearchInput: true,
             searchController: searchController,
